@@ -1,0 +1,23 @@
+<body bgcolor ="#bffffa">
+<h1>{{ question.question_text }}</h1>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+<table style="width:50%"> 
+{% for choice in question.choice_set.all %}
+    <th>{{ choice.choice_text }}</th>
+  
+{% endfor %}
+
+<tr>
+{% for choice in question.choice_set.all %}
+    <td>{{ choice.votes }} vote{{ choice.votes|pluralize }}</td>
+{% endfor %}
+</tr>
+</table><br>
+
+<a href="{% url 'polls:detail' question.id %}">Back</a>
+</body>
